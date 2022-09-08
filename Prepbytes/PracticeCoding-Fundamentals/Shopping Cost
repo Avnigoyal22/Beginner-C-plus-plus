@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  int n;
+  cin>>n;
+  
+  while(n--){
+    int q;
+    float p;
+    cin>>q>>p;
+    
+    float cost;
+    
+    if(q>100){
+      p-=(0.2*p);
+    }
+    
+    cost=p*q;
+    
+    cout<<fixed<<setprecision(1)<<cost<<endl;
+  }
+  return 0;
+}
