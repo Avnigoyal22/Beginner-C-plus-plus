@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  int t;
+  cin>>t;
+  
+  while(t--){
+    float h,m;
+    cin>>h>>m;
+    
+    float ang;
+    
+    if(h*5<m){
+      ang = 6*m-(h*30+m/2);
+    }
+    else if(h*5>m){
+      ang = (h*30+m/2)-6*m;
+    }
+    else{
+      ang=0;
+    }
+    
+    if(ang>180){
+      ang=360-ang;
+    }
+ 
+    cout<<abs(ang)<<endl;
+  }
+  
+  return 0;
+}
