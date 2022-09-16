@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    string str;
+    cin>>str;
+
+    int arr[26];
+    for(int i=0;i<26;i++){
+        arr[i]=0;
+    }
+
+    for(int i=0;i<str.length();i++){
+        arr[str[i]-'a']++;
+    }
+
+    int maxCnt = 0;
+    char maxChar = 'a';
+
+    for(int i=0;i<26;i++){
+        if(arr[i]>maxCnt){
+            maxCnt=arr[i];
+            maxChar=i+'a';
+        }
+    }
+
+    cout<<maxChar<<" "<<maxCnt;
+
+    return 0;
+}
