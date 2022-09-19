@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node* next;
+
+    node(int val){
+        data = val;
+        next = NULL;
+    }
+};
+
+void insert_end(node* &head, int val){
+    node* n = new node(val);
+
+    if(head == NULL){
+        head = n;
+        return;
+    }
+
+    node* temp = head;
+
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    temp->next = n;
+}
+
+//Recursive Method
+node* reverseRecursive(node* &head){
+    if(head == NULL || head->next == NULL){
+        return head;
+    }
+    node* newHead = reverseRecursive(head->next);
+    head->next->next=head;
+    head->next=NULL;
+
+    return newHead;
+}
+
+void display(node* head){
+    node* temp = head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+int main(){
+
+    node* head=NULL;
+    insert_end(head, 10);
+    insert_end(head, 20);
+    insert_end(head, 30);
+    insert_end(head, 40);
+
+    cout<<"Orginal Linked List: ";
+    display(head);
+
+    cout<<endl;
+
+    //Recursive Reverse
+    cout<<"Reversed Linked List: ";
+    node* newHead = reverseRecursive(head);
+    display(newHead);
+
+    return 0;
+}
