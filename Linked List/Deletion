@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node* next;
+
+    node(int val){
+        data = val;
+        next = NULL;
+    }
+};
+
+void insert_end(node* &head, int val){
+    node* n = new node(val);
+
+    if(head == NULL){
+        head = n;
+        return;
+    }
+
+    node* temp = head;
+
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    temp->next = n;
+}
+
+void insert_begin(node* &head, int val){
+    node* n = new node(val);
+
+    n->next=head;
+    head=n;
+}
+
+void display(node* head){
+    node* temp = head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+void delete_first(node* &head){
+    node* todelete = head;
+    head=head->next;
+
+    delete todelete;
+
+}
+
+void deletion(node* &head, int val){
+
+    //If list is empty
+    if(head==NULL){
+        return;
+    }
+    
+    //If only one element is present in the list
+    if(head->next==NULL){
+        delete_first(head);
+        return;
+    }
+
+    node* temp = head;
+
+    while(temp->next->data!=val){
+        temp=temp->next;
+    }
+
+    node* todelete = temp->next;
+    temp->next=temp->next->next;
+
+    delete todelete;
+
+}
+
+int main(){
+    node* head=NULL;
+
+    insert_begin(head,0);
+    insert_end(head, 10);
+    insert_end(head, 20);
+    insert_end(head, 30);
+    display(head);
+    cout<<endl;
+    deletion(head, 20); // deleting an element
+    delete_first(head); // deleting the first element
+    display(head);
+
+    return 0;
+}
