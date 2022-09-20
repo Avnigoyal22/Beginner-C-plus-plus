@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node* next;
+
+    node(int val){
+        data = val;
+        next = NULL;
+    }
+};
+
+void insert_begin(node* &head, int d){
+    node* n = new node(d);
+    n->next=head;
+    head=n;
+}
+
+void insert_end(node* &head, int d){
+    node* n = new node(d);
+    if(head==NULL){
+        head=n;
+        return;
+    }
+    
+    node* temp = head;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    temp->next=n;
+}
+
+node* reversek(node* &head, int k){
+
+    node* prevptr = NULL;
+    node* currptr = head;
+    node* nextptr;
+
+    int cnt=1;
+    while(currptr!=NULL && cnt<=k){
+        nextptr=currptr->next;
+        currptr->next=prevptr;
+        prevptr=currptr;
+        currptr=nextptr;
+        cnt++;
+    }
+
+    if(nextptr!=NULL){
+        head->next = reversek(nextptr, k);
+    }
+    return prevptr;
+}
+
+void display(node* head){
+    node* temp = head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+int main(){
+    node* head=NULL;
+    insert_end(head,10);
+    insert_end(head,20);
+    insert_end(head,30);
+    insert_end(head,40);
+    insert_end(head,50);
+    insert_end(head,60);
+    insert_end(head,70);
+    insert_end(head,80);
+
+    display(head);
+
+    cout<<endl;
+    cout<<"Regquired Reversed Linked List: ";
+    node* newHead = reversek(head, 3);
+    display(newHead);
+    return 0;
+}
