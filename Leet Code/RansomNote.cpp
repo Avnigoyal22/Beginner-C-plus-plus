@@ -26,6 +26,35 @@ public:
 
 //Approach 2 - O(n) time Compexity
 
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int arr[26];
+        for(int i=0;i<26;i++){
+            arr[i]=0;
+        }
+        
+        for(int i=0;i<ransomNote.length();i++){
+            arr[ransomNote[i]-97]++;
+        }
+        
+        for(int i=0;i<magazine.length();i++){
+            if(arr[magazine[i]-97]!=0){
+                arr[magazine[i]-97]--;
+            }
+        }
+        
+        for(int i=0;i<26;i++){
+            if(arr[i]!=0){
+                return false;
+            }
+        }
+        return true;
+        
+        
+    }
+};
+
 int main(){
     string ransomNote, magazine;
     cin>>ransomNote>>magazine;
