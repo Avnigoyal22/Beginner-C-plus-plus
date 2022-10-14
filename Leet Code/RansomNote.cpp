@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//Approach 1 - O(n^2) time Compexity
+
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
@@ -21,6 +23,8 @@ public:
         return true;
     }
 };
+
+//Approach 2 - O(n) time Compexity
 
 int main(){
     string ransomNote, magazine;
