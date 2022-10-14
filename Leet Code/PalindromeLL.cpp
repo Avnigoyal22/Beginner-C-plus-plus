@@ -10,6 +10,7 @@ using namespace std;
       ListNode(int x, ListNode *next) : val(x), next(next) {}
   };
  
+// function to insert elements in the linked list
 void insert_end(ListNode* &head, int val){
     ListNode* n = new ListNode(val);
 
@@ -26,6 +27,7 @@ void insert_end(ListNode* &head, int val){
     temp->next = n;
 }
 
+// check palindrome
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
@@ -68,5 +70,6 @@ int main(){
 
     Solution s;
     
+    // return true/1 if palindrome
     cout<<s.isPalindrome(head);
 }
