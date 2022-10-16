@@ -1,5 +1,3 @@
-// Complete the printMidElement function below.
-
 /*
 For your reference:
 
